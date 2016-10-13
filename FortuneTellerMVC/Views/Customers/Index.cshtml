@@ -1,0 +1,81 @@
+﻿@model IEnumerable<FortuneTellerMVC.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthMonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FavColor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumOfSiblings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saving.SavingsID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transportation.Transportation1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VacationHome.VacationHome1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FavColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumOfSiblings)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saving.SavingsID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transportation.Transportation1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacationHome.VacationHome1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FortuneTellerMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="BirthMonth" Type="int" Nullable="false" />
+    <Property Name="FavColor" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumOfSiblings" Type="int" Nullable="false" />
+    <Property Name="VacationHomeID" Type="int" />
+    <Property Name="TransportationID" Type="int" />
+    <Property Name="SavingsID" Type="int" />
+  </EntityType>
+  <EntityType Name="Savings">
+    <Key>
+      <PropertyRef Name="SavingsID" />
+    </Key>
+    <Property Name="SavingsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SavingsAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Transportations">
+    <Key>
+      <PropertyRef Name="TransportationID" />
+    </Key>
+    <Property Name="TransportationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Transportation" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VacationHomes">
+    <Key>
+      <PropertyRef Name="VacationHomeID" />
+    </Key>
+    <Property Name="VacationHomeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VacationHome" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Customers_Savings">
+    <End Role="Savings" Type="Self.Savings" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savings">
+        <PropertyRef Name="SavingsID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="SavingsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_Transportations">
+    <End Role="Transportations" Type="Self.Transportations" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transportations">
+        <PropertyRef Name="TransportationID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="TransportationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_VacationHomes">
+    <End Role="VacationHomes" Type="Self.VacationHomes" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VacationHomes">
+        <PropertyRef Name="VacationHomeID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="VacationHomeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FortuneTellerMVCModelStoreContainer">
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Savings" EntityType="Self.Savings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transportations" EntityType="Self.Transportations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VacationHomes" EntityType="Self.VacationHomes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Customers_Savings" Association="Self.FK_Customers_Savings">
+      <End Role="Savings" EntitySet="Savings" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Transportations" Association="Self.FK_Customers_Transportations">
+      <End Role="Transportations" EntitySet="Transportations" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_VacationHomes" Association="Self.FK_Customers_VacationHomes">
+      <End Role="VacationHomes" EntitySet="VacationHomes" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

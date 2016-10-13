@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FortuneTellerMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="BirthMonth" Type="Int32" Nullable="false" />
+    <Property Name="FavColor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NumOfSiblings" Type="Int32" Nullable="false" />
+    <Property Name="VacationHomeID" Type="Int32" />
+    <Property Name="TransportationID" Type="Int32" />
+    <Property Name="SavingsID" Type="Int32" />
+    <NavigationProperty Name="Saving" Relationship="Self.FK_Customers_Savings" FromRole="Customers" ToRole="Savings" />
+    <NavigationProperty Name="Transportation" Relationship="Self.FK_Customers_Transportations" FromRole="Customers" ToRole="Transportations" />
+    <NavigationProperty Name="VacationHome" Relationship="Self.FK_Customers_VacationHomes" FromRole="Customers" ToRole="VacationHomes" />
+  </EntityType>
+  <EntityType Name="Saving">
+    <Key>
+      <PropertyRef Name="SavingsID" />
+    </Key>
+    <Property Name="SavingsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SavingsAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Savings" FromRole="Savings" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transportation">
+    <Key>
+      <PropertyRef Name="TransportationID" />
+    </Key>
+    <Property Name="TransportationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transportation1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Transportations" FromRole="Transportations" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="VacationHome">
+    <Key>
+      <PropertyRef Name="VacationHomeID" />
+    </Key>
+    <Property Name="VacationHomeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VacationHome1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_VacationHomes" FromRole="VacationHomes" ToRole="Customers" />
+  </EntityType>
+  <Association Name="FK_Customers_Savings">
+    <End Role="Savings" Type="Self.Saving" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savings">
+        <PropertyRef Name="SavingsID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="SavingsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_Transportations">
+    <End Role="Transportations" Type="Self.Transportation" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transportations">
+        <PropertyRef Name="TransportationID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="TransportationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_VacationHomes">
+    <End Role="VacationHomes" Type="Self.VacationHome" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VacationHomes">
+        <PropertyRef Name="VacationHomeID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="VacationHomeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FortuneTellerMVCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Savings" EntityType="Self.Saving" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Transportations" EntityType="Self.Transportation" />
+    <EntitySet Name="VacationHomes" EntityType="Self.VacationHome" />
+    <AssociationSet Name="FK_Customers_Savings" Association="Self.FK_Customers_Savings">
+      <End Role="Savings" EntitySet="Savings" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Transportations" Association="Self.FK_Customers_Transportations">
+      <End Role="Transportations" EntitySet="Transportations" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_VacationHomes" Association="Self.FK_Customers_VacationHomes">
+      <End Role="VacationHomes" EntitySet="VacationHomes" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
