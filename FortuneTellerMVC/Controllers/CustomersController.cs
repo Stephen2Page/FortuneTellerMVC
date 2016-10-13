@@ -33,6 +33,98 @@ namespace FortuneTellerMVC.Controllers
             {
                 return HttpNotFound();
             }
+            if ((customer.Age % 2 > 0))
+            {
+                ViewBag.RetirementAge = 30;
+            }
+            else
+            {
+                ViewBag.RetirementAge = 15;
+            }
+
+            //vacation home based on siblings, five options, one based on range.
+            
+            if (customer.NumOfSiblings == 0)
+            {
+                customer.VacationHomeID = 1;
+            }
+            else if (customer.NumOfSiblings == 1)
+            {
+                customer.VacationHomeID = 2;
+            }
+            else if (customer.NumOfSiblings == 2)
+            {
+                customer.VacationHomeID = 3;
+            }
+            else if (customer.NumOfSiblings == 3)
+            {
+                customer.VacationHomeID = 4;
+            }
+            else if (customer.NumOfSiblings > 3)
+            {
+                customer.VacationHomeID = 5;
+            }
+            else
+            {
+                customer.VacationHomeID = 6;
+            }
+
+            ////Transportation from color (seven options)
+            //string transportation;
+            //switch (favColor)
+            //{
+            //    case "r":
+            //        transportation = "sport car";
+            //        break;
+
+            //    case "o":
+            //        transportation = "yacht";
+            //        break;
+
+            //    case "y":
+            //        transportation = "submarine";
+            //        break;
+
+            //    case "g":
+            //        transportation = "motor home";
+            //        break;
+
+            //    case "b":
+            //        transportation = "private jet";
+            //        break;
+
+            //    case "i":
+            //        transportation = "motorcycle";
+            //        break;
+
+            //    case "v":
+            //        transportation = "space shuttle";
+            //        break;
+
+            //    default:
+            //        transportation = "donkey cart";
+            //        break;
+
+            //}
+            ////Bank Account from Birth Month based on range. (four options)
+            //if (birthMonthNumber >= 1 && birthMonthNumber <= 4)
+            //{
+            //    nestEgg = "$500,000";
+            //}
+            //else if (birthMonthNumber >= 5 && birthMonthNumber <= 8)
+            //{
+            //    nestEgg = "$2,000,000";
+            //}
+            //else if (birthMonthNumber >= 9 && birthMonthNumber <= 12)
+            //{
+            //    nestEgg = "$10,000,000";
+            //}
+            //else
+            //{
+            //    nestEgg = "a goose egg";
+            //}
+
+            db.SaveChanges();
             return View(customer);
         }
 
