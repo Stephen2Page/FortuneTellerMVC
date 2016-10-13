@@ -29,16 +29,7 @@
         <th>
             @Html.DisplayNameFor(model => model.NumOfSiblings)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Saving.SavingsID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Transportation.Transportation1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VacationHome.VacationHome1)
-        </th>
-        <th></th>
+         <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -60,15 +51,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumOfSiblings)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Saving.SavingsID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Transportation.Transportation1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VacationHome.VacationHome1)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
