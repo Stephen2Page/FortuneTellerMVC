@@ -69,60 +69,62 @@ namespace FortuneTellerMVC.Controllers
                 customer.VacationHomeID = 6;
             }
 
-            ////Transportation from color (seven options)
-            //string transportation;
-            //switch (favColor)
-            //{
-            //    case "r":
-            //        transportation = "sport car";
-            //        break;
+            //Transportation from color (seven options)
+            string favColor;
+            favColor = customer.FavColor.ToLower();
+            favColor = favColor.Substring(0, 1);   //extract just first letter 
+            switch (favColor)
+            {
+                case "r":
+                    customer.TransportationID = 1;
+                    break;
 
-            //    case "o":
-            //        transportation = "yacht";
-            //        break;
+                case "o":
+                    customer.TransportationID= 2;
+                    break;
 
-            //    case "y":
-            //        transportation = "submarine";
-            //        break;
+                case "y":
+                    customer.TransportationID = 3;
+                    break;
 
-            //    case "g":
-            //        transportation = "motor home";
-            //        break;
+                case "g":
+                    customer.TransportationID = 4;
+                    break;
 
-            //    case "b":
-            //        transportation = "private jet";
-            //        break;
+                case "b":
+                    customer.TransportationID = 5;
+                    break;
 
-            //    case "i":
-            //        transportation = "motorcycle";
-            //        break;
+                case "i":
+                    customer.TransportationID = 6;
+                    break;
 
-            //    case "v":
-            //        transportation = "space shuttle";
-            //        break;
+                case "v":
+                    customer.TransportationID = 7;
+                    break;
 
-            //    default:
-            //        transportation = "donkey cart";
-            //        break;
+                default:
+                    customer.TransportationID = 8;
+                    break;
 
-            //}
-            ////Bank Account from Birth Month based on range. (four options)
-            //if (birthMonthNumber >= 1 && birthMonthNumber <= 4)
-            //{
-            //    nestEgg = "$500,000";
-            //}
-            //else if (birthMonthNumber >= 5 && birthMonthNumber <= 8)
-            //{
-            //    nestEgg = "$2,000,000";
-            //}
-            //else if (birthMonthNumber >= 9 && birthMonthNumber <= 12)
-            //{
-            //    nestEgg = "$10,000,000";
-            //}
-            //else
-            //{
-            //    nestEgg = "a goose egg";
-            //}
+            }
+            //Bank Account from Birth Month based on range. (four options)
+            if (customer.BirthMonth >= 1 && customer.BirthMonth <= 4)
+            {
+                customer.SavingsID = 1;
+            }
+            else if (customer.BirthMonth >= 5 && customer.BirthMonth <= 8)
+            {
+                customer.SavingsID = 2;
+            }
+            else if (customer.BirthMonth >= 9 && customer.BirthMonth <= 12)
+            {
+                customer.SavingsID = 3;
+            }
+            else
+            {
+                customer.SavingsID = 4;
+            }
 
             db.SaveChanges();
             return View(customer);
