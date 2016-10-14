@@ -1,80 +1,68 @@
-﻿@model FortuneTellerMVC.Models.Customer
-
+﻿﻿@model FortuneTellerMVC.Models.Customer
 @{
     ViewBag.Title = "Create";
 }
+<h2>Tell me about yourself...</h2>
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Customer</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FirstName, "Tell me your first name...", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.LastName, "Tell me your last name...", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Age, "Tell me how old you are...", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.BirthMonth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.BirthMonth, "What month were you born...", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.BirthMonth, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BirthMonth, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.FavColor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FavColor, "What is your favorite color...", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.FavColor, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FavColor, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.NumOfSiblings, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.NumOfSiblings, "How many siblings have you...", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.EditorFor(model => model.NumOfSiblings, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumOfSiblings, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Learn your future!" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Welcome page", "Index")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

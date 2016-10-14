@@ -1,88 +1,88 @@
-﻿@model FortuneTellerMVC.Models.Customer
-
+﻿﻿@model FortuneTellerMVC.Models.Customer
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
+<h2>Here is your future...</h2>
 <div>
-    <h4>Customer</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    <p>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</p>
+    <p>You will retire in <span>@ViewBag.RetirementAge</span></p>
+    <p>You will retire with @Html.DisplayFor(model => model.Saving.SavingsAmount) in the Bank.</p>
+    <p>You will have a vacation home in </p>
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Age)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthMonth)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.BirthMonth)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BirthMonth)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BirthMonth)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FavColor)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.FavColor)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FavColor)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FavColor)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumOfSiblings)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumOfSiblings)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumOfSiblings)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NumOfSiblings)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Saving.SavingsAmount)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Saving.SavingsAmount)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Saving.SavingsAmount)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Saving.SavingsAmount)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Transportation.Transportation1)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Transportation.Transportation1)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Transportation.Transportation1)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Transportation.Transportation1)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VacationHome.VacationHome1)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.VacationHome.VacationHome1)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VacationHome.VacationHome1)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.VacationHome.VacationHome1)
+            </dd>
 
-    </dl>
+        </dl>*@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
